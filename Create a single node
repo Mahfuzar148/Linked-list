@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef struct node* Node;
+struct node{
+    int data;
+    Node link;
+};
+
+int main()
+{
+   Node head = NULL;
+   head = (Node) malloc(sizeof(Node));
+
+   head->data=20;
+   head->link = NULL;
+   printf("%d",head->data);
+   return 0;
+}

@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef struct node Node;
+struct node{
+    int data;
+    struct node *link;
+
+};
+Node *create_node(Node *ptr,int item)
+{
+    ptr = (Node*)malloc(sizeof(Node));
+    ptr->data = item;
+    ptr->link = NULL;
+    return ptr;
+}
+Node *add_begin(Node *head,int item)
+{
+    Node *ptr ;
+    ptr = create_node(NULL,item);
+
+    ptr->link=head;
+    head = ptr;
+    return head;
+}
+int main()
+{
+    Node *head,*ptr,*tmp;
+
+    head = (Node*)malloc(sizeof(Node));
+     head->data = 5;
+     head->link = NULL;
+
+     ptr = create_node(NULL,10);
+     head->link = ptr;
+     head = add_begin(head,100);
+     Node *next = head;
+     while(next!=NULL)
+     {
+         cout<<next->data<<" ";
+         next = next->link;
+     }
+     cout<<endl;
+
+
+     return 0;
+
+}

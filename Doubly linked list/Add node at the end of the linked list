@@ -1,0 +1,75 @@
+/** Doubly linked list */
+
+#include<bits/stdc++.h>
+using namespace std;
+struct node{
+    struct node* prev;
+    int data;
+    struct node* next;
+};
+struct node* Create_node(int data)
+{
+    struct node* tmp = (struct node*)malloc(sizeof(struct node));
+    tmp->prev = NULL;
+    tmp->data = data;
+    tmp->next = NULL;
+    return tmp;
+}
+
+struct node* addToEmpty(struct node* head, int data)
+{
+    struct node* tmp =(struct node*) malloc(sizeof(struct node));
+    tmp->prev = NULL;
+    tmp->data = data;
+    tmp->next = NULL;
+    head = tmp;
+    return head;
+}
+
+struct node* Add_node_begin(struct node* head,int data)
+{
+    struct node* tmp = (struct node*)malloc(sizeof(struct node));
+    tmp = Create_node(data);
+    tmp->next = head;
+    head->prev = tmp;
+    head = tmp;
+    return head;
+
+}
+struct node* Add_at_last(struct node* head,int data)
+{
+    struct node* tmp = (struct node*)malloc(sizeof(struct node));
+    struct node* tmp1 = (struct node*)malloc(sizeof(struct node));
+    tmp1 = Create_node(data);
+
+    tmp = head;
+    while(tmp->next!=NULL)
+    {
+        tmp = tmp->next;
+    }
+    tmp->next=tmp1;
+    tmp1->prev = tmp;
+
+    return head;
+}
+void print(struct node* head)
+{
+    struct node* tmp = (struct node*)malloc(sizeof(struct node));
+    tmp = head;
+    while(tmp!=NULL)
+    {
+        cout<<tmp->data<<" ";
+        tmp = tmp->next;
+    }
+    cout<<endl;
+}
+
+int main()
+{
+    struct node* head = NULL;
+    head = addToEmpty(head,45);
+    head = Add_node_begin(head,55);
+    head = Add_at_last(head,60);
+    print(head);
+    return 0;
+}

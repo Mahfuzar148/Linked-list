@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct node{
+    struct node* prev;
+    int data;
+    struct node* next;
+};
+struct node* addToEmpty(struct node* head, int data)
+{
+    struct node* tmp =(struct node*) malloc(sizeof(struct node));
+    tmp->prev = NULL;
+    tmp->data = data;
+    tmp->next = NULL;
+    head = tmp;
+    return head;
+}
+struct node* Add_node_begin(struct node* head,int data)
+{
+    struct node* tmp = (struct node*)malloc(sizeof(struct node));
+    tmp->prev = NULL;
+    tmp->data = data;
+    tmp->next = NULL;
+    tmp->next = head;
+    head->prev = tmp;
+    head = tmp;
+    return head;
+
+}
+void print(struct node* head)
+{
+    struct node* tmp = (struct node*)malloc(sizeof(struct node));
+    tmp = head;
+    while(tmp!=NULL)
+    {
+        cout<<tmp->data<<" ";
+        tmp = tmp->next;
+    }
+    cout<<endl;
+}
+
+int main()
+{
+    struct node* head = NULL;
+    head = addToEmpty(head,45);
+    head = Add_node_begin(head,55);
+    print(head);
+    return 0;
+}
